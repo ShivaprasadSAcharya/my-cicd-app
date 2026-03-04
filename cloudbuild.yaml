@@ -1,7 +1,11 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <h1>CI/CD Implementation Successful!</h1>
-    <p>Indha application GitHub-la irundhu automatic-ah deploy aagudhu.</p>
-</body>
-</html>
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  [
+    'compute',
+    'ssh',
+    'shivaprasad-cicd-vm',
+    '--zone=us-central1-a',
+    '--command',
+    'cd ~ && rm -rf my-cicd-app && git clone https://github.com/ShivaprasadSAcharya/my-cicd-app.git && sudo cp my-cicd-app/index.html /var/www/html/index.html'
+  ]
